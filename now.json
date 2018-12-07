@@ -5,10 +5,11 @@
   "public": true,
   "builds": [
     {
-      "src": "www/next.config.js", 
+      "src": "www/package.json",
       "use": "@now/next",
       "config": {
-        "maxLambdaSize": "40mb"
+        "useBuildUtils": "@now/build-utils@canary",
+        "maxLambdaSize": "50mb"
       }
     },
     {
@@ -27,6 +28,11 @@
     {
       "src": "/page-2", "dest": "/news/public/page-2/index.html"
     },    
+    {
+      "src": "/_next/(.*)",
+      "headers": {"cache-control": "max-age=86400"},
+      "dest": "www/_next/$1"
+    },
     {
       "src": "/",
       "dest": "www/index"
