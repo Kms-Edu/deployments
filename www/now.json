@@ -1,14 +1,15 @@
 {
   "alias": "www",
   "name": "www",
-  "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/about",
-      "dest": "/www/about"
-    },
-    {
-      "src": "/",
-      "dest": "/www/index"
+      "src": "package.json",
+      "use": "@now/next",
+      "config": {
+        "useBuildUtils": "@now/build-utils@canary",
+        "maxLambdaSize": "50mb"
+      }
     }
-  ]
+  ]  
 }
