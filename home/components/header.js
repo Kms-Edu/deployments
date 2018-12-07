@@ -9,7 +9,6 @@ const Header = () => {
     <Link href={'/archives'}>Archives</Link>
     <Link href={'/slides/lesson1'}>Lesson 1</Link>
     <Link href={'/slides/lesson2'}>Lesson 2</Link>
-    <Link href={'/slides/lesson3'}>Lesson 3</Link>
   </header>
 )}
 
