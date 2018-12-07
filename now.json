@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "kms-main",
-  "public": true,
   "alias": "kms-main",
   "builds": [
     {
@@ -45,13 +44,11 @@
     },
     {
       "src": "/_next/(.*)",
-      "headers": {"cache-control": "s-maxage=31536000"},
-      "dest": "www/$1"
+      "dest": "www/_next/$1"
     },
     {
-      "src": "/blog/(.*)",
-      "headers": {"cache-control": "s-maxage=31536000"},
-      "dest": "blog/$1"
+      "src": "/blog/_next/(.*)",
+      "dest": "blog/_next/$1"
     },
     { "src": "/api/.*", "dest": "/api/build/index.js" }
   ]
