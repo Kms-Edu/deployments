@@ -1,6 +1,7 @@
 import Header from '../components/header'
 import ErrorMessage from '../components/error-message'
 import { Query } from 'react-apollo'
+import Layout from '../components/layout'
 import gql from 'graphql-tag'
 
 const testQuery = gql`
@@ -31,7 +32,10 @@ const AgeList = ({sche_ages}) => {
 }
 
 const Page = () => (
-  <main>
+  <Layout
+    title="Home"
+    description="Home"
+  >
     <Header />
     Home page
     <Query query={testQuery}>
@@ -42,7 +46,7 @@ const Page = () => (
         return <AgeList sche_ages={sche_ages} />
       }}
     </Query>
-    </main>
+  </Layout>
 )
 
 export default Page

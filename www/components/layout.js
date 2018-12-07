@@ -1,4 +1,3 @@
-import '../../asserts/styles.less'
 import Head from 'next/head'
 import React from 'react'
 export default ({ children, title, description }) => (
@@ -47,3 +46,4 @@ export default ({ children, title, description }) => (
       `}</style>
     </main>
   )
+  
