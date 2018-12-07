@@ -23,7 +23,10 @@
     { "src": "home/package.json", "use": "@now/static-build" },
     { "src": "slides/lesson1/index.mdx", "use": "@now/mdx-deck" },
     { "src": "slides/lesson2/index.mdx", "use": "@now/mdx-deck" },
-    { "src": "slides/lesson3/package.json", "use": "@now/static-build" },
+    { "src": "slides/lesson3/package.json", "use": "@now/static-build",
+      "config": {
+        "maxLambdaSize": "100mb"
+      } },
     { "src": "news/package.json", "use": "@now/static-build", "config": {"distDir": "public"} }
   ],
   "routes": [
