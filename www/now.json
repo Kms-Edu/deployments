@@ -1,0 +1,14 @@
+{
+  "alias": "www",
+  "name": "www",
+  "routes": [
+    {
+      "src": "/about",
+      "dest": "/www/about"
+    },
+    {
+      "src": "/",
+      "dest": "/www/index"
+    }
+  ]
+}

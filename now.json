@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "name": "kms-main",
+  "public": true,
+  "alias": "kms-main",
+  "builds": [
+    {
+      "src": "www/next.config.js", 
+      "use": "@now/next",
+      "config": {
+        "maxLambdaSize": "10mb"
+      }
+    },
+    {
+      "src": "blog/next.config.js", "use": "@now/next"
+    },
+    { 
+      "src": "api/build/index.js", "use": "@now/node-server" 
+    },
+    {
+      "src": "/static/*", "use": "@now/static"
+    },
+    { "src": "home/package.json", "use": "@now/static-build" },
+    { "src": "slides/lesson1/index.mdx", "use": "@now/mdx-deck" },
+    { "src": "slides/lesson2/index.mdx", "use": "@now/mdx-deck" },
+    { "src": "slides/lesson3/package.json", "use": "@now/static-build" },
+    { "src": "news/package.json", "use": "@now/static-build", "config": {"distDir": "public"} }
+  ],
+  "routes": [
+    { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
+    { "src": "/robots.txt", "dest": "/static/robots.txt" },
+    { "src": "slides/lesson1", "dest": "/slides/lesson1/index.html"},
+    { "src": "slides/lesson2", "dest": "/slides/lesson2/index.html"},
+    { "src": "slides/lesson3", "dest": "/slides/lesson3/dist/index.html"},
+    {
+      "src": "/news", "dest": "/news/public/index.html"
+    },
+    {
+      "src": "/page-2", "dest": "/news/public/page-2/index.html"
+    },    
+    {
+      "src": "/",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/www/about"
+    },
+    {
+      "src": "/hello-world",
+      "dest": "/blog/hello-world"
+    },
+    {
+      "src": "/archives",
+      "dest": "/blog/archives"
+    },
+    {
+      "src": "/_next/(.*)",
+      "headers": {"cache-control": "s-maxage=0"},
+      "dest": "www/_next/$1"
+    },
+    {
+      "src": "/blog/_next/(.*)",
+      "headers": {"cache-control": "s-maxage=0"},
+      "dest": "blog/_next/$1"
+    },
+    {
+      "src": "/home/_next/(.*)",
+      "headers": {"cache-control": "s-maxage=0"},
+      "dest": "home/_next/$1"
+    },
+    { "src": "/api/.*", "dest": "/api/build/index.js" }
+  ]
+}
