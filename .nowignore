@@ -6,6 +6,7 @@ blog/node_modules
 blog/package-lock.json
 api/node_modules
 api/package-lock.json
+news
 calendar
 home/.next
 home/dist
