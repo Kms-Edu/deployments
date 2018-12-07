@@ -11,7 +11,7 @@ const themeVariables = lessToJS(
   )
 )
 
-const prefix = '/www'
+const prefix = ''
 
 // fix: prevents error when .less files are required by node
 if (typeof require !== 'undefined') {
