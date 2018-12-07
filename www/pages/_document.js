@@ -10,14 +10,11 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <meta charset="utf-8" />
-          <title>Main Application</title>
+          <meta charSet="utf-8" />
           <meta http-equiv="x-ua-compatible" content="ie=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
-          <meta name="Description" content="Main application" />
-          <style>{`body { margin: 0 } /* custom! */`}</style>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>          
         </Head>
-        <body className="custom_class">
+        <body>
           <Main />
           <NextScript />
         </body>

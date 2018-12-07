@@ -11,7 +11,7 @@ const themeVariables = lessToJS(
   )
 )
 
-const prefix = '/home'
+const prefix = ''
 
 // fix: prevents error when .less files are required by node
 if (typeof require !== 'undefined') {

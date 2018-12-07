@@ -1,9 +1,8 @@
-import App from '../components/app'
 import Header from '../components/header'
 
 export default () => (
-  <App>
+  <main>
     <Header />
     About page
-  </App>
+  </main>
 )

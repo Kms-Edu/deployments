@@ -1,4 +1,3 @@
-import App from '../components/app'
 import Header from '../components/header'
 import ErrorMessage from '../components/error-message'
 import { Query } from 'react-apollo'
@@ -31,8 +30,8 @@ const AgeList = ({sche_ages}) => {
   })
 }
 
-export default () => (
-  <App>
+const Page = () => (
+  <main>
     <Header />
     Home page
     <Query query={testQuery}>
@@ -43,5 +42,7 @@ export default () => (
         return <AgeList sche_ages={sche_ages} />
       }}
     </Query>
-  </App>
+    </main>
 )
+
+export default Page
