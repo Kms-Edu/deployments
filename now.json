@@ -19,8 +19,7 @@
     },
     {
       "src": "/static/*", "use": "@now/static"
-    },
-    { "src": "home/package.json", "use": "@now/static-build" }    
+    }
   ],
   "routes": [
     { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
@@ -53,11 +52,6 @@
       "src": "^/blog/_next/static/(.*)",
       "headers": {"cache-control": "s-maxage=31536000"},
       "dest": "blog/_next/static/$1"
-    },
-    {
-      "src": "^/home/_next/static/(.*)",
-      "headers": {"cache-control": "s-maxage=31536000"},
-      "dest": "home/_next/static/$1"
     },
     { "src": "/api/.*", "dest": "/api/build/index.js" }
   ]
