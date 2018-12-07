@@ -6,7 +6,7 @@
   "builds": [
     {
       "src": "www/next.config.js", 
-      "use": "@now/next",
+      "use": "@now/next@0.0.81",
       "config": {
         "maxLambdaSize": "10mb"
       }
