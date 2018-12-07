@@ -2,6 +2,7 @@
   "version": 2,
   "name": "kms-main",
   "alias": "kms-main",
+  "public": true,
   "builds": [
     {
       "src": "www/next.config.js", 
