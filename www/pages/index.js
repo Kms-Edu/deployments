@@ -1,8 +1,15 @@
-import Header from '../components/header'
-import ErrorMessage from '../components/error-message'
 import { Query } from 'react-apollo'
-import Layout from '../components/layout'
+import dynamic from 'next/dynamic'
 import gql from 'graphql-tag'
+import MeasureRender from '../containers/measure-render'
+import Layout from '../components/layout'
+
+//import Header from '../components/header'
+//import ErrorMessage from '../components/error-message'
+//const MeasureRender = dynamic(import('../containers/measure-render'), {ssr: false})
+//const Layout = dynamic(import('../components/layout'))
+const ErrorMessage = dynamic(import('../components/error-message'))
+const Header = dynamic(import('../components/header'))
 
 const testQuery = gql`
   query{
@@ -32,21 +39,25 @@ const AgeList = ({sche_ages}) => {
 }
 
 const Page = () => (
-  <Layout
-    title="Home"
-    description="Home"
-  >
-    <Header />
-    Home page
-    <Query query={testQuery}>
-      {({loading, error, data: {sche_ages}}) => {
-        if (error) return <ErrorMessage message='Error loading posts.' />
-        if (loading) return <div>Loading</div>
+  <MeasureRender name="IndexPage">
+    <Layout
+      title="Home"
+      description="Home"
+    >
+      <Header />
+      Home page
+      
+        <Query query={testQuery}>
+          {({loading, error, data: {sche_ages}}) => {
+            if (error) return <ErrorMessage message='Error loading posts.' />
+            if (loading) return <div>Loading</div>
 
-        return <AgeList sche_ages={sche_ages} />
-      }}
-    </Query>
-  </Layout>
+            return <AgeList sche_ages={sche_ages} />
+          }}
+        </Query>
+      
+    </Layout>
+  </MeasureRender>
 )
 
 export default Page

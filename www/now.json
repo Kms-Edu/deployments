@@ -11,5 +11,16 @@
         "maxLambdaSize": "50mb"
       }
     }
-  ]  
+  ],
+  "routes": [
+    {
+      "src": "/_next/(.*)",
+      "headers": {"cache-control": "max-age=86400"},
+      "dest": "/_next/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
