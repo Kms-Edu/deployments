@@ -1,24 +1,17 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+import flush from 'styled-jsx/server'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
+  static async getInitialProps (ctx) {
+    const sheet = new ServerStyleSheet()
+    const styles = flush()
+    const originalRenderPage = ctx.renderPage
+    ctx.renderPage = () => originalRenderPage({
+      enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+    })
 
-  render() {
-    return (
-      <html>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>          
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </html>
-    )
+    const initialProps = await Document.getInitialProps(ctx)
+    return { ...initialProps, styles: [...initialProps.styles, ...sheet.getStyleElement(), ...styles] }
   }
 }

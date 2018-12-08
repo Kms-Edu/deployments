@@ -1,15 +1,20 @@
-import { Query } from 'react-apollo'
-import dynamic from 'next/dynamic'
+import '../assets/styles.less'
+import Query from '../containers/query'
 import gql from 'graphql-tag'
 import MeasureRender from '../containers/measure-render'
 import Layout from '../components/layout'
+import styled from 'styled-components'
+import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button,  Row, Col  } from 'antd'
+import Header from '../components/header'
+import ErrorMessage from '../components/error-message'
 
-//import Header from '../components/header'
-//import ErrorMessage from '../components/error-message'
+const FormItem = Form.Item
+const Option = Select.Option
+
 //const MeasureRender = dynamic(import('../containers/measure-render'), {ssr: false})
 //const Layout = dynamic(import('../components/layout'))
-const ErrorMessage = dynamic(import('../components/error-message'))
-const Header = dynamic(import('../components/header'))
+//const ErrorMessage = dynamic(import('../components/error-message'))
+//const Header = dynamic(import('../components/header'))
 
 const testQuery = gql`
   query{
@@ -21,6 +26,19 @@ const testQuery = gql`
     }
   }
 `
+
+const testSubscription = gql`
+  subscription {
+    sche_ages{
+      id
+      age_name
+      from_month
+      to_month
+    }
+  }
+`
+
+
 const Age = ({sche_age: {id, age_name, from_month, to_month}}) => {
   return (
     <div>
@@ -38,6 +56,13 @@ const AgeList = ({sche_ages}) => {
   })
 }
 
+
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`
 const Page = () => (
   <MeasureRender name="IndexPage">
     <Layout
@@ -45,19 +70,95 @@ const Page = () => (
       description="Home"
     >
       <Header />
-      Home page
+      <Title>Home page</Title>
       
-        <Query query={testQuery}>
-          {({loading, error, data: {sche_ages}}) => {
-            if (error) return <ErrorMessage message='Error loading posts.' />
-            if (loading) return <div>Loading</div>
+      <Query
+        query={testQuery}
+        subscription={testSubscription}>
+        {data => <AgeList sche_ages={data.sche_ages} />
+        }
+      </Query>
+        <div style={{ marginTop: 100 }}>
+    <Form layout='horizontal'>
+      <FormItem
+        label='Input Number'
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <InputNumber size='large' min={1} max={10} style={{ width: 100 }} defaultValue={3} name='inputNumber' />
+        <a href='#'>Link</a>
+      </FormItem>
 
-            return <AgeList sche_ages={sche_ages} />
-          }}
-        </Query>
-      
+      <FormItem
+        label='Switch'
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <Switch defaultChecked name='switch' />
+      </FormItem>
+
+      <FormItem
+        label='Slider'
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <Slider defaultValue={70} />
+      </FormItem>
+
+      <FormItem
+        label='Select'
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <Select size='large' defaultValue='lucy' style={{ width: 192 }} name='select'>
+          <Option value='jack'>jack</Option>
+          <Option value='lucy'>lucy</Option>
+          <Option value='disabled' disabled>disabled</Option>
+          <Option value='yiminghe'>yiminghe</Option>
+        </Select>
+      </FormItem>
+
+      <FormItem
+        label='DatePicker'
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 8 }}
+      >
+        <DatePicker name='startDate' />
+      </FormItem>
+      <FormItem
+        style={{ marginTop: 48 }}
+        wrapperCol={{ span: 8, offset: 8 }}
+      >
+        <Button size='large' type='primary' htmlType='submit'>
+        OK
+        </Button>
+        <Button size='large' style={{ marginLeft: 8 }}>
+        Cancel
+        </Button>
+      </FormItem>
+    </Form>
+  </div>
+  <div>
+  <Row>
+      <Col span={12}>col-12</Col>
+      <Col span={12}>col-12</Col>
+    </Row>
+    <Row>
+      <Col span={8}>col-8</Col>
+      <Col span={8}>col-8</Col>
+      <Col span={8}>col-8</Col>
+    </Row>
+    <Row>
+      <Col span={6}>col-6</Col>
+      <Col span={6}>col-6</Col>
+      <Col span={6}>col-6</Col>
+      <Col span={6}>col-6</Col>
+    </Row>
+  </div>
     </Layout>
   </MeasureRender>
 )
-
+Page.getInitialProps = async ({apolloClient, fetchPolicy}) => {
+  await apolloClient.query({query: testQuery, ...fetchPolicy})
+}
 export default Page

@@ -1,7 +1,7 @@
 {
-  "alias": "www",
   "name": "www",
   "version": 2,
+  "alias": "web.ihs.edu.vn",
   "builds": [
     {
       "src": "package.json",
@@ -15,12 +15,16 @@
   "routes": [
     {
       "src": "/_next/(.*)",
-      "headers": {"cache-control": "max-age=86400"},
+      "headers": {"cache-control": "max-age=31536000"},
       "dest": "/_next/$1"
     },
     {
       "src": "/(.*)",
+      "headers": {"cache-control": "max-age=3600"},
       "dest": "/$1"
     }
-  ]
+  ],
+  "env": {
+    "WWW_PREFIX": ""
+  }
 }
