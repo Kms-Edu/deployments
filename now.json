@@ -18,6 +18,9 @@
     { 
       "src": "api/handlers/**/index.js", "use": "@now/node" 
     },
+    { 
+      "src": "api/handlers/**/index.go", "use": "@now/go" 
+    },
     {
       "src": "/static/*", "use": "@now/static"
     }
