@@ -1,7 +1,7 @@
 {
   "name": "www",
   "version": 2,
-  "alias": "web.ihs.edu.vn",
+  "alias": "www",
   "builds": [
     {
       "src": "package.json",
@@ -20,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "headers": {"cache-control": "max-age=3600"},
+      "headers": {"cache-control": "max-age=600"},
       "dest": "/$1"
     }
   ],

@@ -29,26 +29,33 @@
       "src": "/page-2", "dest": "/news/public/page-2/index.html"
     },    
     {
-      "src": "/_next/(.*)",
+      "src": "/www/_next/(.*)",
       "headers": {"cache-control": "max-age=86400"},
-      "dest": "www/_next/$1"
+      "dest": "/www/_next/$1"
     },
     {
       "src": "/",
-      "dest": "www/index"
+      "headers": {"cache-control": "max-age=600"},
+      "dest": "/www/index"
     },
     {
       "src": "/about",
-      "dest": "www/about"
+      "headers": {"cache-control": "max-age=600"},
+      "dest": "/www/about"
     },
     {
       "src": "/hello-world",
-      "dest": "blog/hello-world"
+      "headers": {"cache-control": "max-age=600"},
+      "dest": "/blog/hello-world"
     },
     {
       "src": "/archives",
-      "dest": "blog/archives"
+      "headers": {"cache-control": "max-age=600"},
+      "dest": "/blog/archives"
     },
     { "src": "/api/.*", "dest": "api/build/index.js" }
-  ]
+  ],
+  "env": {
+    "WWW_PREFIX": "/www"
+  }
 }

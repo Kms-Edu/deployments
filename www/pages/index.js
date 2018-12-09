@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import styled from 'styled-components'
 import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button,  Row, Col  } from 'antd'
 import Header from '../components/header'
-import ErrorMessage from '../components/error-message'
+import {AccountCircle} from 'styled-icons/material/AccountCircle.cjs'
 
 const FormItem = Form.Item
 const Option = Select.Option
@@ -71,7 +71,7 @@ const Page = () => (
     >
       <Header />
       <Title>Home page</Title>
-      
+      <AccountCircle size={30} />
       <Query
         query={testQuery}
         subscription={testSubscription}>

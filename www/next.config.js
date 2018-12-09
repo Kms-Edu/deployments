@@ -36,6 +36,8 @@ module.exports = (phase, {defaultConfig}) => {
     }
   }
   const withLess = require('@zeit/next-less')
+  const withStyledIcons = require('next-plugin-styled-icons')
+
   // fix: prevents error when .less files are required by node
   if (typeof require !== 'undefined') {
     require.extensions['.less'] = (file) => {}
@@ -73,12 +75,12 @@ module.exports = (phase, {defaultConfig}) => {
       return config
     }
   }
-  return withLess({
+  return withLess(withStyledIcons({
     ...defaultConfig,
     ...crittersConfig,
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: themeVariables,
     },
-  })
+  }))
 }
