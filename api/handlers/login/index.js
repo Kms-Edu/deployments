@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken')
 const axios = require('axios')
 const Koa = require('koa')
 const koaBody = require('koa-body')
-const responseTime = require('../middlewares/response-time')
-const errorHandler = require('../middlewares/error-handler')
-const acceptedContentType = require('../middlewares/accept-content-type')
+const responseTime = require('../../middlewares/response-time')
+const errorHandler = require('../../middlewares/error-handler')
+const acceptedContentType = require('../../middlewares/accept-content-type')
 
 function createJwtToken({id, active}){
   return jwt.sign({id, active}, JWT_SECRET);
