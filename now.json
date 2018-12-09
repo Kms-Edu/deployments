@@ -18,6 +18,9 @@
     { 
       "src": "api/build/index.js", "use": "@now/node-server" 
     },
+    { 
+      "src": "api/login/index.js", "use": "@now/node" 
+    },
     {
       "src": "/static/*", "use": "@now/static"
     }
@@ -53,9 +56,12 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
-    { "src": "/api/.*", "dest": "api/build/index.js" }
+    { "src": "/api/login", "methods": ["POST"], "dest": "/api/login/index.js" },
+    { "src": "/api/graphql", "dest": "api/build/index.js" }
   ],
   "env": {
-    "WWW_PREFIX": "/www"
+    "WWW_PREFIX": "/www",
+    "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
+    "JWT_SECRET": "tanphong"
   }
 }

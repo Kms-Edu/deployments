@@ -12,3 +12,5 @@ home/.next
 home/dist
 slides/lesson3/dist
 README
+node_modules
+package-lock.json
