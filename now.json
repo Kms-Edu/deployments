@@ -16,7 +16,7 @@
       "src": "blog/next.config.js", "use": "@now/next"
     },   
     { 
-      "src": "api/handlers/*.js", "use": "@now/node" 
+      "src": "api/handlers/**/index.js", "use": "@now/node" 
     },
     {
       "src": "/static/*", "use": "@now/static"
@@ -53,8 +53,13 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
-    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1.js" }
+    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
   ],
+  "build": {
+    "env": {
+      "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
+    }
+  },
   "env": {
     "WWW_PREFIX": "/www",
     "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",

@@ -25,6 +25,7 @@
     }
   ],
   "env": {
-    "WWW_PREFIX": ""
+    "WWW_PREFIX": "",
+    "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
   }
 }
