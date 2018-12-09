@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "graphql": "^14.0.2",
     "graphqurl": "^0.3.2",
     "jsonwebtoken": "^8.4.0",
     "koa": "^2.6.2",
