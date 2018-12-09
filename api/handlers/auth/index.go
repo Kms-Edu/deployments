@@ -2,8 +2,8 @@ package main
 
 import (
   "encoding/json"
-  "fmt"
   "net/http"
+  "time"
 )
 
 type Todo struct {
