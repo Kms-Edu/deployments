@@ -4,8 +4,9 @@ www/node_modules
 www/package-lock.json
 blog/node_modules
 blog/package-lock.json
-api/node_modules
-api/package-lock.json
+api/handlers/build/*
+api/handlers/node_modules
+api/handlers/package-lock.json
 news
 calendar
 home/.next

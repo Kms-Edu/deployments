@@ -14,12 +14,9 @@
     },
     {
       "src": "blog/next.config.js", "use": "@now/next"
-    },
+    },   
     { 
-      "src": "api/build/index.js", "use": "@now/node-server" 
-    },
-    { 
-      "src": "api/login/index.js", "use": "@now/node" 
+      "src": "api/handlers/*.js", "use": "@now/node" 
     },
     {
       "src": "/static/*", "use": "@now/static"
@@ -56,8 +53,7 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
-    { "src": "/api/login", "methods": ["POST"], "dest": "/api/login/index.js" },
-    { "src": "/api/graphql", "dest": "api/build/index.js" }
+    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1.js" }
   ],
   "env": {
     "WWW_PREFIX": "/www",

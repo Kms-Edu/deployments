@@ -100,5 +100,3 @@ app.use(main)
 // to test locally, is there a better way?
 if (!process.env.NOW_REGION) app.listen(3000)
 module.exports = app.callback()
-
-
