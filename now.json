@@ -55,6 +55,11 @@
     },
     { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
   ],
+  "build": {
+    "env": {
+      "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
+    }
+  },
   "env": {
     "WWW_PREFIX": "/www",
     "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
