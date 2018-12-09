@@ -57,12 +57,12 @@
   ],
   "build": {
     "env": {
-      "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
+      "API_HOST": "@api_host"
     }
   },
   "env": {
     "WWW_PREFIX": "/www",
-    "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
+    "API_HOST": "@api_host",
     "JWT_SECRET": "tanphong"
   }
 }
