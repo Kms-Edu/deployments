@@ -16,7 +16,7 @@
       "src": "blog/next.config.js", "use": "@now/next"
     },   
     { 
-      "src": "api/handlers/dist/**/*.js", "use": "@now/node" 
+      "src": "api/handlers/**/index.js", "use": "@now/node" 
     },
     {
       "src": "/static/*", "use": "@now/static"
@@ -53,7 +53,7 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
-    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/dist/$1" }
+    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
   ],
   "env": {
     "WWW_PREFIX": "/www",
