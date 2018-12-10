@@ -4,7 +4,6 @@ import withApp from '../lib/with-app'
 import AppContainer from '../containers/app'
 
 import {compose} from 'recompose'
-import '../assets/styles.less'
 export default compose(
   withReduxStore,
   withApolloClient,

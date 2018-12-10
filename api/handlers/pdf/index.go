@@ -5,9 +5,9 @@ import (
   "fmt"
   "strconv"
   "bytes"
+  "github.com/jung-kurt/gofpdf"
+  "io"
 )
-import "github.com/jung-kurt/gofpdf"
-
 
 func Handler(w http.ResponseWriter, r *http.Request) {
   pdf := gofpdf.New("P", "mm", "A4", "")
@@ -15,14 +15,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   pdf.SetFont("Arial", "B", 16)
   pdf.Cell(40, 10, "Hello, world")
   
-  X := new(bytes.Buffer)
+  blob := new(bytes.Buffer)
 
-	pdf.Output(X)
-	pdf.Close()
-	_, err := X.WriteTo(w)
-	if err != nil {
-		fmt.Fprintf(w, "%s", err)
-  }
+	pdf.Output(blob)
+  pdf.Close()
   
   w.Header().Set("Pragma", "public")
 	w.Header().Set("Expires", "0")
@@ -31,5 +27,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/pdf; charset=utf-8")
 	w.Header().Set("Content-Disposition", "attachment; filename=\"report.pdf\";")
 	w.Header().Set("Content-Transfer-Encoding", "binary")
-	w.Header().Set("Content-Length", strconv.Itoa(len(X.Bytes())))
+  w.Header().Set("Content-Length", strconv.Itoa(len(blob.Bytes())))
+  
+  pdfContents := blob.Bytes()
+	_, err := w.Write(pdfContents)
+	if err != nil {
+		fmt.Fprintf(w, "%s", err)
+  }
 }
