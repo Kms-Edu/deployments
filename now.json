@@ -56,6 +56,7 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
+    { "src": "/api/pdf", "dest": "/api/handlers/pdf" },
     { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
   ],
   "build": {

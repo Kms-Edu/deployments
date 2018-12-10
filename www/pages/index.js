@@ -1,13 +1,21 @@
-import '../assets/styles.less'
 import Query from '../containers/query'
 import gql from 'graphql-tag'
 import MeasureRender from '../containers/measure-render'
 import Layout from '../components/layout'
-import styled from 'styled-components'
+import Title from '../components/title'
 import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button,  Row, Col  } from 'antd'
 import Header from '../components/header'
 import {AccountCircle} from 'styled-icons/material/AccountCircle.cjs'
+import { useStore } from 'easy-peasy';
 
+const TodoList = () => {
+  const todos = useStore(state => state.todos.items);
+  return (
+    <div>
+      {todos.map((todo, idx) => <div key={idx}>{todo}</div>)}
+    </div>
+  );
+};
 const FormItem = Form.Item
 const Option = Select.Option
 
@@ -57,12 +65,6 @@ const AgeList = ({sche_ages}) => {
 }
 
 
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`
 const Page = () => (
   <MeasureRender name="IndexPage">
     <Layout
@@ -72,6 +74,7 @@ const Page = () => (
       <Header />
       <Title>Home page</Title>
       <AccountCircle size={30} />
+      <TodoList />
       <Query
         query={testQuery}
         subscription={testSubscription}>

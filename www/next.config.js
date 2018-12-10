@@ -2,9 +2,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const prefix = dev ? '' : process.env.WWW_PREFIX
 
 const { PHASE_PRODUCTION_SERVER } =
-  process.env.NODE_ENV === "development"
-    ? require("next/constants")
-    : require("next-server/constants");
+  process.env.NODE_ENV === 'development'
+    ? {}
+    : !process.env.NOW_REGION // ℹ️ Must be `NOW_REGION`, not `NOW` (my bad)
+      ? require('next/constants')
+      : require('next-server/constants');
 
 const sharedConfig = {
   assetPrefix: prefix,
@@ -13,7 +15,12 @@ const sharedConfig = {
     config.node = {
       fs: 'empty'
     }
-
+    if (config.mode === 'production') {
+      const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+      if (Array.isArray(config.optimization.minimizer)) {
+        config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
+      }
+    }
     config.module.rules.push(
       {
         test: /\.mjs$/,
@@ -37,6 +44,7 @@ module.exports = (phase, {defaultConfig}) => {
   }
   const withLess = require('@zeit/next-less')
   const withStyledIcons = require('next-plugin-styled-icons')
+  const withCSS = require('@zeit/next-css');
 
   // fix: prevents error when .less files are required by node
   if (typeof require !== 'undefined') {
@@ -75,12 +83,12 @@ module.exports = (phase, {defaultConfig}) => {
       return config
     }
   }
-  return withLess(withStyledIcons({
+  return withLess(withStyledIcons(withCSS({
     ...defaultConfig,
     ...crittersConfig,
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: themeVariables,
     },
-  }))
+  })))
 }
