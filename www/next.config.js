@@ -1,10 +1,11 @@
 const dev = process.env.NODE_ENV !== 'production'
 const prefix = dev ? '' : process.env.WWW_PREFIX
+const not_now = !process.env.NOW_REGION
 
 const { PHASE_PRODUCTION_SERVER } =
-  process.env.NODE_ENV === 'development'
+  dev
     ? {}
-    : !process.env.NOW_REGION // ℹ️ Must be `NOW_REGION`, not `NOW` (my bad)
+    : not_now // ℹ️ Must be `NOW_REGION`, not `NOW` (my bad)
       ? require('next/constants')
       : require('next-server/constants');
 
@@ -20,10 +21,12 @@ const sharedConfig = {
       if (Array.isArray(config.optimization.minimizer)) {
         config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
       }
+      
       const Critters = require('critters-webpack-plugin');
       config.plugins.concat([
         new Critters({preload: 'swap'})
       ])
+            
     }
     config.module.rules.push(
       {
@@ -40,7 +43,7 @@ const sharedConfig = {
 }
 
 module.exports = (phase, {defaultConfig}) => {
-  if (phase === PHASE_PRODUCTION_SERVER) {
+  if (phase === PHASE_PRODUCTION_SERVER && !not_now) {
     return {
       ...defaultConfig,
       ...sharedConfig,
@@ -48,7 +51,6 @@ module.exports = (phase, {defaultConfig}) => {
   }
   const withLess = require('@zeit/next-less')
   const withStyledIcons = require('next-plugin-styled-icons')
-  const Critters = require('critters-webpack-plugin');
   const withMDX = require('@zeit/next-mdx')({
     extension: /\.(md|mdx)$/
   })
@@ -72,15 +74,11 @@ module.exports = (phase, {defaultConfig}) => {
   )
   const crittersConfig = {
     assetPrefix: prefix,
-    webpack: config => {
+    webpack: (config, { isServer, buildId, dev }) => {
       // Fixes npm packages that depend on `fs` module
       config.node = {
         fs: 'empty'
       }
-
-      config.plugins.concat([
-        new Critters({preload: 'swap'})
-      ])
 
       config.module.rules.push(
         {
@@ -95,7 +93,8 @@ module.exports = (phase, {defaultConfig}) => {
       return config
     }
   }
-  return withMDX(withLess(withStyledIcons(withCSS({
+
+  const nextConfig = {
     ...defaultConfig,
     ...crittersConfig,
     lessLoaderOptions: {
@@ -103,5 +102,8 @@ module.exports = (phase, {defaultConfig}) => {
       modifyVars: themeVariables,
     },
     pageExtensions: ['js', 'jsx', 'mdx', 'md']
-  }))))
+  }
+  return withCSS(withLess(withStyledIcons(withMDX(
+    nextConfig
+  ))))
 }

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "kms-main",
-  "alias": "kms-main",
+  "name": "kms-test",
+  "alias": "kms-test",
   "public": true,
   "builds": [
     {
@@ -61,7 +61,8 @@
   ],
   "build": {
     "env": {
-      "API_HOST": "@api_host"
+      "API_HOST": "@api_host",
+      "GOOGLE_CLIENT_ID": "@google_client_id"
     }
   },
   "env": {
