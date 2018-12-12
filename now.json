@@ -18,6 +18,9 @@
     { 
       "src": "api/handlers/**/index.js", "use": "@now/node" 
     },
+    { 
+      "src": "api/handlers/**/index.go", "use": "@now/go" 
+    },
     {
       "src": "/static/*", "use": "@now/static"
     }
@@ -53,16 +56,17 @@
       "headers": {"cache-control": "max-age=600"},
       "dest": "/blog/archives"
     },
+    { "src": "/api/pdf", "dest": "/api/handlers/pdf/index.go" },
     { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
   ],
   "build": {
     "env": {
-      "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
+      "API_HOST": "@api_host"
     }
   },
   "env": {
     "WWW_PREFIX": "/www",
-    "API_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
+    "API_HOST": "@api_host",
     "JWT_SECRET": "tanphong"
   }
 }
