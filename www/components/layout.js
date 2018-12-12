@@ -4,8 +4,7 @@ export default ({ children, title, description }) => (
     <main>
       <Head>
         <title>{title}</title>
-        <meta name="Description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <meta name="Description" content={description} />        
       </Head>
       {children}
       <style jsx global>{`

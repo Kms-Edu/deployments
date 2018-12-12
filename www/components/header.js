@@ -3,7 +3,11 @@ import {Menu} from 'styled-icons/boxicons-regular/Menu.cjs'
 import {Icon} from 'antd';
 import dynamic from 'next/dynamic'
 import styled from 'styled-components/macro'
-const Login = dynamic(import('./auth/google-login'))
+const Login = dynamic(import('./auth/google-login'), {
+  ssr: false,
+  loading: () => <div>...</div>
+})
+
 const goto = (as) => e => {
   e.preventDefault()
   setTimeout(() => window.location.href = as, 100)

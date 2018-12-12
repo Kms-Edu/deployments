@@ -1,14 +1,7 @@
 import React from 'react';
-import dynamic from 'next/dynamic'
-import {Icon} from 'antd'
 import styled from 'styled-components/macro'
 import { useAction, useStore } from 'easy-peasy';
-import { GoogleLogout } from 'react-google-login';
-
-const GoogleLogin = dynamic(import('react-google-login'), {
-  ssr: false,
-  loading: () => <Icon type='spinner' />
-})
+const { GoogleLogin, GoogleLogout } = typeof window === 'object' ? require('react-google-login') : {};
 
 const HeaderLink = styled.a`
   font-size: 14px;
