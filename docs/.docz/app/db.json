@@ -1,0 +1,51 @@
+{
+  "config": {
+    "title": "Docs",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "ordering": "descending",
+    "version": "1.0.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {},
+    "dest": "/dist",
+    "base": "/docs"
+  },
+  "entries": {
+    "hello-world.mdx": {
+      "name": "Hello world",
+      "route": "/",
+      "id": "874c5050b3e42fcf460a4fcd8044dfdb",
+      "filepath": "hello-world.mdx",
+      "link": null,
+      "slug": "hello-world",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "hello-world",
+          "value": "Hello world!"
+        }
+      ]
+    },
+    "Development/database.mdx": {
+      "name": "Database",
+      "route": "/database",
+      "id": "c87b77acb10ab68818171097e069cb2a",
+      "filepath": "Development/database.mdx",
+      "link": null,
+      "slug": "development-database",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "database",
+          "value": "Database"
+        }
+      ]
+    }
+  }
+}

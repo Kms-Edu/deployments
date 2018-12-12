@@ -2,10 +2,9 @@
   "version": 2,
   "name": "kms-test",
   "alias": "kms-test",
-  "public": true,
   "builds": [
     {
-      "src": "www/package.json",
+      "src": "www/home/package.json",
       "use": "@now/next",
       "config": {
         "useBuildUtils": "@now/build-utils@canary",
@@ -13,51 +12,120 @@
       }
     },
     {
-      "src": "blog/next.config.js", "use": "@now/next"
-    },   
-    { 
-      "src": "api/handlers/**/index.js", "use": "@now/node" 
-    },
-    { 
-      "src": "api/handlers/**/index.go", "use": "@now/go" 
+      "src": "www/blog/next.config.js",
+      "use": "@now/next"
     },
     {
-      "src": "/static/*", "use": "@now/static"
+      "src": "www/home_mobile/next.config.js",
+      "use": "@now/next"
+    },
+    {
+      "src": "api/handlers/**/index.js",
+      "use": "@now/node"
+    },
+    {
+      "src": "api/handlers/**/index.go",
+      "use": "@now/go"
+    },
+    {
+      "src": "/static/*",
+      "use": "@now/static"
+    },
+    {
+      "src": "docs/package.json",
+      "use": "@now/static-build"
     }
   ],
   "routes": [
-    { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
-    { "src": "/robots.txt", "dest": "/static/robots.txt" },    
     {
-      "src": "/page-2", "dest": "/news/public/page-2/index.html"
-    },    
+      "src": "/favicon.ico",
+      "dest": "/static/favicon.ico"
+    },
     {
-      "src": "/www/_next/(.*)",
-      "headers": {"cache-control": "max-age=86400"},
-      "dest": "/www/_next/$1"
+      "src": "/robots.txt",
+      "dest": "/static/robots.txt"
+    },
+    {
+      "src": "/www/home/_next/(.*)",
+      "headers": {
+        "cache-control": "max-age=86400"
+      },
+      "dest": "/www/home/_next/$1"
+    },
+    {
+      "src": "/www/blog/_next/(.*)",
+      "headers": {
+        "cache-control": "max-age=86400"
+      },
+      "dest": "/www/blog/_next/$1"
+    },
+    {
+      "src": "/www/home_mobile/_next/(.*)",
+      "headers": {
+        "cache-control": "max-age=86400"
+      },
+      "dest": "/www/home_mobile/_next/$1"
+    },
+    {
+      "src": "/docs/*",
+      "headers": {
+        "cache-control": "max-age=3600"
+      },
+      "dest": "/docs/index.html"
     },
     {
       "src": "/",
-      "headers": {"cache-control": "max-age=600"},
-      "dest": "/www/index"
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/home/index"
+    },
+    {
+      "src": "/m",
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/home_mobile/index"
     },
     {
       "src": "/about",
-      "headers": {"cache-control": "max-age=600"},
-      "dest": "/www/about"
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/home/about"
+    },
+    {
+      "src": "/m/about",
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/home_mobile/about"
     },
     {
       "src": "/hello-world",
-      "headers": {"cache-control": "max-age=600"},
-      "dest": "/blog/hello-world"
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/blog/hello-world"
     },
     {
       "src": "/archives",
-      "headers": {"cache-control": "max-age=600"},
-      "dest": "/blog/archives"
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/blog/archives"
     },
-    { "src": "/api/pdf", "dest": "/api/handlers/pdf/index.go" },
-    { "src": "/api/(.*)", "methods": ["POST"], "dest": "/api/handlers/$1" }
+    {
+      "src": "/api/pdf",
+      "dest": "/api/handlers/pdf/index.go"
+    },
+    {
+      "src": "/api/(.*)",
+      "methods": [
+        "POST"
+      ],
+      "dest": "/api/handlers/$1"
+    }
   ],
   "build": {
     "env": {
@@ -66,7 +134,9 @@
     }
   },
   "env": {
-    "WWW_PREFIX": "/www",
+    "WWW_HOME_PREFIX": "/www/home",
+    "WWW_BLOG_PREFIX": "/www/blog",
+    "WWW_HOME_MOBILE_PREFIX": "/www/home_mobile",
     "API_HOST": "@api_host",
     "JWT_SECRET": "tanphong"
   }

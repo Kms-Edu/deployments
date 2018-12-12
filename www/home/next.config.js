@@ -1,6 +1,6 @@
 const dev = process.env.NODE_ENV !== 'production'
-const prefix = dev ? '' : process.env.WWW_PREFIX
 const not_now = !process.env.NOW_REGION
+const prefix = not_now ? '' : process.env.WWW_HOME_PREFIX
 
 const { PHASE_PRODUCTION_SERVER } =
   dev
