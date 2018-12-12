@@ -20,6 +20,10 @@ const sharedConfig = {
       if (Array.isArray(config.optimization.minimizer)) {
         config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}));
       }
+      const Critters = require('critters-webpack-plugin');
+      config.plugins.concat([
+        new Critters({preload: 'swap'})
+      ])
     }
     config.module.rules.push(
       {
@@ -44,7 +48,11 @@ module.exports = (phase, {defaultConfig}) => {
   }
   const withLess = require('@zeit/next-less')
   const withStyledIcons = require('next-plugin-styled-icons')
-  const withCSS = require('@zeit/next-css');
+  const Critters = require('critters-webpack-plugin');
+  const withMDX = require('@zeit/next-mdx')({
+    extension: /\.(md|mdx)$/
+  })
+  const withCSS = require('@zeit/next-css')
 
   // fix: prevents error when .less files are required by node
   if (typeof require !== 'undefined') {
@@ -70,6 +78,10 @@ module.exports = (phase, {defaultConfig}) => {
         fs: 'empty'
       }
 
+      config.plugins.concat([
+        new Critters({preload: 'swap'})
+      ])
+
       config.module.rules.push(
         {
           test: /\.mjs$/,
@@ -83,12 +95,13 @@ module.exports = (phase, {defaultConfig}) => {
       return config
     }
   }
-  return withLess(withStyledIcons(withCSS({
+  return withMDX(withLess(withStyledIcons(withCSS({
     ...defaultConfig,
     ...crittersConfig,
     lessLoaderOptions: {
       javascriptEnabled: true,
       modifyVars: themeVariables,
     },
-  })))
+    pageExtensions: ['js', 'jsx', 'mdx', 'md']
+  }))))
 }

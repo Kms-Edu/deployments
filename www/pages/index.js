@@ -1,10 +1,9 @@
 import Query from '../containers/query'
 import gql from 'graphql-tag'
 import MeasureRender from '../containers/measure-render'
-import Layout from '../components/layout'
+import Layout from '../components/layouts/guest'
 import Title from '../components/title'
 import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button,  Row, Col  } from 'antd'
-import Header from '../components/header'
 import {AccountCircle} from 'styled-icons/material/AccountCircle.cjs'
 import { useStore } from 'easy-peasy';
 
@@ -71,7 +70,6 @@ const Page = () => (
       title="Home"
       description="Home"
     >
-      <Header />
       <Title>Home page</Title>
       <AccountCircle size={30} />
       <TodoList />

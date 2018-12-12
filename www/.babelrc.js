@@ -10,7 +10,7 @@ module.exports = {
         "libraryName": "antd",
         "style": true
       }
-    ]
+    ],
   ],
   presets: ["next/babel"],
 }
