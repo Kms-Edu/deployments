@@ -1,4 +1,4 @@
-import Layout from '../components/layouts/guest'
+import Layout from '../components/layouts/nav-bar'
 import styled from 'styled-components'
 import dynamic from 'next/dynamic'
 import {useStore, useAction} from 'easy-peasy'

@@ -68,7 +68,7 @@ if (not_now) {
   const cors = require('@koa/cors');
   app.use(cors());
 }
-app.use(koaBody({ jsonLimit: '2kb' }))
+app.use(koaBody({ jsonLimit: '1kb' }))
 app.use(responseTime)
 app.use(errorHandler.use)
 app.on('Error', errorHandler.on)

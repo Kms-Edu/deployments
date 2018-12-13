@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "kms-test",
-  "alias": "kms-test",
+  "alias": "web.ihs.edu.vn",
   "builds": [
     {
       "src": "www/home/package.json",
@@ -46,23 +46,27 @@
       "dest": "/static/robots.txt"
     },
     {
+      "src": "/static/logo.png",
+      "dest": "/static/logo.png"
+    },
+    {
       "src": "/www/home/_next/(.*)",
       "headers": {
-        "cache-control": "max-age=86400"
+        "cache-control": "max-age=31536000"
       },
       "dest": "/www/home/_next/$1"
     },
     {
       "src": "/www/blog/_next/(.*)",
       "headers": {
-        "cache-control": "max-age=86400"
+        "cache-control": "max-age=31536000"
       },
       "dest": "/www/blog/_next/$1"
     },
     {
       "src": "/www/home_mobile/_next/(.*)",
       "headers": {
-        "cache-control": "max-age=86400"
+        "cache-control": "max-age=31536000"
       },
       "dest": "/www/home_mobile/_next/$1"
     },

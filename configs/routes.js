@@ -10,14 +10,15 @@ const headers = (age) => {
 const staticNextRoutes = [homePrefix, blogPrefix, homeMobilePrefix].map(item => {
   return {
     src: `${item}/_next/(.*)`,
-    headers: headers(86400),
+    headers: headers(31536000),
     dest: `${item}/_next/$1`
   }
 })
 
 module.exports = [
   { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
-  { "src": "/robots.txt", "dest": "/static/robots.txt" },    
+  { "src": "/robots.txt", "dest": "/static/robots.txt" },   
+  { "src": "/static/logo.png", "dest": "/static/logo.png" },    
   ...staticNextRoutes,
   {
     src: "/docs/*",

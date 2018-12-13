@@ -1,9 +1,8 @@
 import Query from '../containers/query'
 import gql from 'graphql-tag'
 import MeasureRender from '../containers/measure-render'
-import Layout from '../components/layouts/guest'
+import Layout from '../components/layouts/nav-bar'
 import Title from '../components/title'
-import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button,  Row, Col  } from 'antd'
 import {AccountCircle} from 'styled-icons/material/AccountCircle.cjs'
 import { useStore } from 'easy-peasy';
 
@@ -15,8 +14,6 @@ const TodoList = () => {
     </div>
   );
 };
-const FormItem = Form.Item
-const Option = Select.Option
 
 //const MeasureRender = dynamic(import('../containers/measure-render'), {ssr: false})
 //const Layout = dynamic(import('../components/layout'))
@@ -79,83 +76,6 @@ const Page = () => (
         {data => <AgeList sche_ages={data.sche_ages} />
         }
       </Query>
-        <div style={{ marginTop: 100 }}>
-    <Form layout='horizontal'>
-      <FormItem
-        label='Input Number'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-      >
-        <InputNumber size='large' min={1} max={10} style={{ width: 100 }} defaultValue={3} name='inputNumber' />
-        <a href='#'>Link</a>
-      </FormItem>
-
-      <FormItem
-        label='Switch'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-      >
-        <Switch defaultChecked name='switch' />
-      </FormItem>
-
-      <FormItem
-        label='Slider'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-      >
-        <Slider defaultValue={70} />
-      </FormItem>
-
-      <FormItem
-        label='Select'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-      >
-        <Select size='large' defaultValue='lucy' style={{ width: 192 }} name='select'>
-          <Option value='jack'>jack</Option>
-          <Option value='lucy'>lucy</Option>
-          <Option value='disabled' disabled>disabled</Option>
-          <Option value='yiminghe'>yiminghe</Option>
-        </Select>
-      </FormItem>
-
-      <FormItem
-        label='DatePicker'
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 8 }}
-      >
-        <DatePicker name='startDate' />
-      </FormItem>
-      <FormItem
-        style={{ marginTop: 48 }}
-        wrapperCol={{ span: 8, offset: 8 }}
-      >
-        <Button size='large' type='primary' htmlType='submit'>
-        OK
-        </Button>
-        <Button size='large' style={{ marginLeft: 8 }}>
-        Cancel
-        </Button>
-      </FormItem>
-    </Form>
-  </div>
-  <div>
-  <Row>
-      <Col span={12}>col-12</Col>
-      <Col span={12}>col-12</Col>
-    </Row>
-    <Row>
-      <Col span={8}>col-8</Col>
-      <Col span={8}>col-8</Col>
-      <Col span={8}>col-8</Col>
-    </Row>
-    <Row>
-      <Col span={6}>col-6</Col>
-      <Col span={6}>col-6</Col>
-      <Col span={6}>col-6</Col>
-      <Col span={6}>col-6</Col>
-    </Row>
-  </div>
     </Layout>
   </MeasureRender>
 )
