@@ -2,12 +2,13 @@ const env = require('./env')
 const homePrefix = env['WWW_HOME_PREFIX']
 const homeMobilePrefix = env['WWW_HOME_MOBILE_PREFIX']
 const blogPrefix = env['WWW_BLOG_PREFIX']
+const dashboardPrefix = env['WWW_DASHBOARD_PREFIX']
 const headers = (age) => {
   return {
     "cache-control": `max-age=${age}`
   }
 }
-const staticNextRoutes = [homePrefix, blogPrefix, homeMobilePrefix].map(item => {
+const staticNextRoutes = [homePrefix, blogPrefix, homeMobilePrefix, dashboardPrefix].map(item => {
   return {
     src: `${item}/_next/(.*)`,
     headers: headers(31536000),
@@ -18,7 +19,7 @@ const staticNextRoutes = [homePrefix, blogPrefix, homeMobilePrefix].map(item => 
 module.exports = [
   { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
   { "src": "/robots.txt", "dest": "/static/robots.txt" },   
-  { "src": "/static/logo.png", "dest": "/static/logo.png" },    
+  { "src": "/static/logo.png", headers: headers(31536000), "dest": "/static/logo.png" },    
   ...staticNextRoutes,
   {
     src: "/docs/*",
@@ -44,6 +45,11 @@ module.exports = [
     src: "/m/about",
     headers: headers(600),
     dest: `${homeMobilePrefix}/about`
+  },
+  {
+    src: "/dashboard",
+    headers: headers(600),
+    dest: `${dashboardPrefix}/index`
   },
   {
     src: "/hello-world",

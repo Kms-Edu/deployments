@@ -92,7 +92,7 @@ const main = async ctx => {
     }
     if (dev) console.log(variables)
     const res = await createUser(gql, variables)
-    console.log(res)
+    if (dev) console.log(res)
     let info1 = res.data.insert_sche_users.returning[0]
     const token = createJwtToken(info1)
     setCookie(ctx, token)

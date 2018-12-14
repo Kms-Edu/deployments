@@ -31,7 +31,7 @@
     }
   },
   "env": {
-    "WWW_HOME_PREFIX": "",
+    "WWW_DASHBOARD_PREFIX": "",
     "API_HOST": "@api_host"
   }
 }

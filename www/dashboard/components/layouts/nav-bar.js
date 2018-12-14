@@ -3,6 +3,7 @@ import LeftMenu from './left-menu'
 import RightMenu from './right-menu'
 import { Drawer, Button } from 'antd';
 import Head from 'next/head'
+import Link from '../link'
 import styled from 'styled-components/macro'
 import './nav-bar.css'
 const Logo = styled.img`
@@ -39,7 +40,7 @@ render() {
         <meta name="Description" content={description} />        
       </Head>
           <div className="logo">
-            <a href="/"><Logo src="/static/logo.png" /></a>
+            <Link href="/"><Logo src="/static/logo.png" /></Link>
           </div>
           <div className="menuCon">
             <div className="leftMenu">
@@ -60,11 +61,8 @@ render() {
             >
               <LeftMenu />
               <RightMenu />
-              
             </Drawer>
-            
-</div>
-
+        </div>
         </nav>
         <ChildrenWrapper>
           {children}

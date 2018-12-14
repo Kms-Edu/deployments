@@ -16,6 +16,10 @@
       "use": "@now/next"
     },
     {
+      "src": "www/dashboard/next.config.js",
+      "use": "@now/next"
+    },
+    {
       "src": "www/home_mobile/next.config.js",
       "use": "@now/next"
     },
@@ -47,6 +51,9 @@
     },
     {
       "src": "/static/logo.png",
+      "headers": {
+        "cache-control": "max-age=31536000"
+      },
       "dest": "/static/logo.png"
     },
     {
@@ -69,6 +76,13 @@
         "cache-control": "max-age=31536000"
       },
       "dest": "/www/home_mobile/_next/$1"
+    },
+    {
+      "src": "/www/dashboard/_next/(.*)",
+      "headers": {
+        "cache-control": "max-age=31536000"
+      },
+      "dest": "/www/dashboard/_next/$1"
     },
     {
       "src": "/docs/*",
@@ -106,6 +120,13 @@
       "dest": "/www/home_mobile/about"
     },
     {
+      "src": "/dashboard",
+      "headers": {
+        "cache-control": "max-age=600"
+      },
+      "dest": "/www/dashboard/index"
+    },
+    {
       "src": "/hello-world",
       "headers": {
         "cache-control": "max-age=600"
@@ -140,6 +161,7 @@
   "env": {
     "WWW_HOME_PREFIX": "/www/home",
     "WWW_BLOG_PREFIX": "/www/blog",
+    "WWW_DASHBOARD_PREFIX": "/www/dashboard",
     "WWW_HOME_MOBILE_PREFIX": "/www/home_mobile",
     "API_HOST": "@api_host",
     "JWT_SECRET": "tanphong"

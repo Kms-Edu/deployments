@@ -11,6 +11,9 @@ module.exports = [
     "src": "www/blog/next.config.js", "use": "@now/next"
   },
   {
+    "src": "www/dashboard/next.config.js", "use": "@now/next"
+  },
+  {
     "src": "www/home_mobile/next.config.js", "use": "@now/next"
   },   
   { 
