@@ -5,6 +5,7 @@ module.exports = {
     ["macros"],
     ['transform-define', env],
     ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }],
+    "@babel/plugin-proposal-class-properties",
     [
       "import", {
         "libraryName": "antd",

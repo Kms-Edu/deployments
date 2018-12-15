@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "nextjs",
+  "builds": [
+      { "src": "next.config.js", "use": "@now/next" }
+  ],
+  "env": {
+    "MOBILE_HOME_PREFIX": "",
+    "API_HOST": "@api_host"
+  }
+}

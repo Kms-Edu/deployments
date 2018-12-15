@@ -79,7 +79,7 @@ const Page = () => (
     </Layout>
   </MeasureRender>
 )
-Page.getInitialProps = async ({apolloClient, fetchPolicy}) => {
-  await apolloClient.query({query: testQuery, ...fetchPolicy})
+Page.getInitialProps = async ({res, apolloClient, fetchPolicy}) => {  
+  await apolloClient.query({query: testQuery, ...fetchPolicy})    
 }
 export default Page
