@@ -13,7 +13,7 @@ const staticNextRoutes = [homePrefix].map(item => {
   }
 })
 
-module.exports = [
+module.exports = [  
   { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
   { "src": "/robots.txt", "dest": "/static/robots.txt" },   
   { "src": "/static/logo.png", headers: headers(31536000), "dest": "/static/logo.png" },    
@@ -27,5 +27,21 @@ module.exports = [
     src: "/about",
     headers: headers(600),
     dest: `${homePrefix}/about`
+  },  
+  {
+    "src": "/service-worker.js",
+    "dest": `${homePrefix}/_next/static/service-worker.js`,
+    "headers": {
+      "cache-control": "public, max-age=43200, immutable",
+      "Service-Worker-Allowed": "/"
+    }
+  },
+  {
+    "src": "/(.*)",
+    "dest": `${homePrefix}/$1`,
+    "headers": {
+      "cache-control": "public, max-age=43200, immutable",
+      "Service-Worker-Allowed": "/"
+    }
   },
 ]

@@ -48,6 +48,22 @@
         "cache-control": "max-age=600"
       },
       "dest": "/home/about"
+    },
+    {
+      "src": "/home/service-worker.js",
+      "dest": "/home/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/home/$1",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
     }
   ],
   "build": {

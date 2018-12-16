@@ -1,22 +1,14 @@
 {
-  "./noop": [
-    {
-      "id": "./node_modules/next/dist/client/noop.js",
-      "name": "./node_modules/next/dist/client/noop.js",
-      "file": "static/chunks/0.js",
-      "publicPath": "static/chunks/0.js"
-    }
-  ],
   "./index.css": [
     {
-      "id": "./node_modules/antd-mobile/lib/button/style/index.css",
-      "name": "./node_modules/antd-mobile/lib/button/style/index.css",
+      "id": "./node_modules/antd-mobile/lib/list/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/list/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./node_modules/antd-mobile/lib/icon/style/index.css",
-      "name": "./node_modules/antd-mobile/lib/icon/style/index.css",
+      "id": "./node_modules/antd-mobile/lib/wing-blank/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/wing-blank/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
@@ -27,21 +19,51 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
+      "id": "./node_modules/antd-mobile/lib/icon/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/icon/style/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
       "id": "./node_modules/antd-mobile/lib/style/index.css",
       "name": "./node_modules/antd-mobile/lib/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": "./node_modules/antd-mobile/lib/wing-blank/style/index.css",
-      "name": "./node_modules/antd-mobile/lib/wing-blank/style/index.css",
+      "id": "./node_modules/antd-mobile/lib/list-view/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/list-view/style/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./node_modules/antd-mobile/lib/drawer/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/drawer/style/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./node_modules/antd-mobile/lib/tabs/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/tabs/style/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./node_modules/antd-mobile/lib/tab-bar/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/tab-bar/style/index.css",
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": "./node_modules/antd-mobile/lib/badge/style/index.css",
+      "name": "./node_modules/antd-mobile/lib/badge/style/index.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     }
   ],
   "undefined": [
     {
-      "id": 6,
+      "id": 12,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -53,13 +75,31 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
+      "id": 5,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 13,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
       "id": 7,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 5,
+      "id": 14,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 9,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -71,7 +111,19 @@
       "publicPath": "static/chunks/styles.js"
     },
     {
-      "id": 9,
+      "id": 10,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 6,
+      "name": null,
+      "file": "static/chunks/styles.js",
+      "publicPath": "static/chunks/styles.js"
+    },
+    {
+      "id": 11,
       "name": null,
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
@@ -83,6 +135,180 @@
       "name": "./node_modules/normalize.css/normalize.css",
       "file": "static/chunks/styles.js",
       "publicPath": "static/chunks/styles.js"
+    }
+  ],
+  "./noop": [
+    {
+      "id": "./node_modules/next/dist/client/noop.js",
+      "name": "./node_modules/next/dist/client/noop.js",
+      "file": "static/chunks/0.js",
+      "publicPath": "static/chunks/0.js"
+    }
+  ],
+  "../components/tab-bar": [
+    {
+      "id": "./components/tab-bar.js",
+      "name": "./components/tab-bar.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../_util/getDataAttr": [
+    {
+      "id": "./node_modules/antd-mobile/lib/_util/getDataAttr.js",
+      "name": "./node_modules/antd-mobile/lib/_util/getDataAttr.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../badge": [
+    {
+      "id": "./node_modules/antd-mobile/lib/badge/index.js",
+      "name": "./node_modules/antd-mobile/lib/badge/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../../badge/style/css": [
+    {
+      "id": "./node_modules/antd-mobile/lib/badge/style/css.js",
+      "name": "./node_modules/antd-mobile/lib/badge/style/css.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./Tab": [
+    {
+      "id": "./node_modules/antd-mobile/lib/tab-bar/Tab.js",
+      "name": "./node_modules/antd-mobile/lib/tab-bar/Tab.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "antd-mobile/lib/tab-bar": [
+    {
+      "id": "./node_modules/antd-mobile/lib/tab-bar/index.js",
+      "name": "./node_modules/antd-mobile/lib/tab-bar/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "antd-mobile/lib/tab-bar/style/css": [
+    {
+      "id": "./node_modules/antd-mobile/lib/tab-bar/style/css.js",
+      "name": "./node_modules/antd-mobile/lib/tab-bar/style/css.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../tabs": [
+    {
+      "id": "./node_modules/antd-mobile/lib/tabs/index.js",
+      "name": "./node_modules/antd-mobile/lib/tabs/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../../tabs/style/css": [
+    {
+      "id": "./node_modules/antd-mobile/lib/tabs/style/css.js",
+      "name": "./node_modules/antd-mobile/lib/tabs/style/css.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../core-js/object/get-own-property-descriptor": [
+    {
+      "id": "./node_modules/babel-runtime/core-js/object/get-own-property-descriptor.js",
+      "name": "./node_modules/babel-runtime/core-js/object/get-own-property-descriptor.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "../core-js/object/get-prototype-of": [
+    {
+      "id": "./node_modules/babel-runtime/core-js/object/get-prototype-of.js",
+      "name": "./node_modules/babel-runtime/core-js/object/get-prototype-of.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "babel-runtime/helpers/get": [
+    {
+      "id": "./node_modules/babel-runtime/helpers/get.js",
+      "name": "./node_modules/babel-runtime/helpers/get.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./config": [
+    {
+      "id": "./node_modules/rc-gesture/es/config.js",
+      "name": "./node_modules/rc-gesture/es/config.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "rc-gesture": [
+    {
+      "id": "./node_modules/rc-gesture/es/index.js",
+      "name": "./node_modules/rc-gesture/es/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./util": [
+    {
+      "id": "./node_modules/rc-gesture/es/util.js",
+      "name": "./node_modules/rc-gesture/es/util.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    },
+    {
+      "id": "./node_modules/rmc-tabs/es/util/index.js",
+      "name": "./node_modules/rmc-tabs/es/util/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./DefaultTabBar": [
+    {
+      "id": "./node_modules/rmc-tabs/es/DefaultTabBar.js",
+      "name": "./node_modules/rmc-tabs/es/DefaultTabBar.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./TabPane": [
+    {
+      "id": "./node_modules/rmc-tabs/es/TabPane.js",
+      "name": "./node_modules/rmc-tabs/es/TabPane.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./Tabs.base": [
+    {
+      "id": "./node_modules/rmc-tabs/es/Tabs.base.js",
+      "name": "./node_modules/rmc-tabs/es/Tabs.base.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "./Tabs": [
+    {
+      "id": "./node_modules/rmc-tabs/es/Tabs.js",
+      "name": "./node_modules/rmc-tabs/es/Tabs.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
+    }
+  ],
+  "rmc-tabs": [
+    {
+      "id": "./node_modules/rmc-tabs/es/index.js",
+      "name": "./node_modules/rmc-tabs/es/index.js",
+      "file": "static/chunks/2.js",
+      "publicPath": "static/chunks/2.js"
     }
   ]
 }
