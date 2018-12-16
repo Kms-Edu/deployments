@@ -1,11 +1,20 @@
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 //import ListView from '../components/list-view'
+/*
 const ListView = dynamic(import('../components/list-view'), {
   ssr: false,
 })
-
+*/
 //import Drawer from '../components/drawer'
-
+const Item = () => {
+  return (
+    <div>
+      <Link href="/">Go to home</Link>
+      Item
+    </div>
+  )
+}
 const TabBar = dynamic(import('../components/tab-bar'), {
   ssr: false
 })
@@ -22,7 +31,7 @@ const Drawer = dynamic(import('../components/drawer'))
 */
 const content = (
   <TabBar
-      life={<div><ListView /></div>}
+      life={<div><Item /></div>}
       koubei={<div>Koubei</div>}
       friend={<div>Friend</div>}
       my={<div>My</div>}

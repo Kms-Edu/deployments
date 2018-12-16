@@ -5,27 +5,28 @@
   "pages": {
     "/index": [
       "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
       "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.e4f61e3ab51c444200ab.hot-update.js"
+      "static/webpack/static/runtime/main.js.bb5dc6c0f6fa571de440.hot-update.js"
+    ],
+    "/item": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js",
+      "static/webpack/static/runtime/main.js.bb5dc6c0f6fa571de440.hot-update.js"
     ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.e4f61e3ab51c444200ab.hot-update.js"
+      "static/webpack/static/runtime/main.js.bb5dc6c0f6fa571de440.hot-update.js"
     ],
     "/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.e4f61e3ab51c444200ab.hot-update.js"
+      "static/webpack/static/runtime/main.js.bb5dc6c0f6fa571de440.hot-update.js"
     ],
     "/": [
       "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
       "static/runtime/main.js",
-      "static/webpack/static/runtime/main.js.e4f61e3ab51c444200ab.hot-update.js"
+      "static/webpack/static/runtime/main.js.bb5dc6c0f6fa571de440.hot-update.js"
     ]
   }
 }

@@ -46,9 +46,9 @@ class TabBarExample extends React.Component {
             }}
             data-seed="logId"
           >
-            <div style={{marginTop: '44px'}}>
+            
               {life}
-            </div>
+            
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -76,9 +76,7 @@ class TabBarExample extends React.Component {
             }}
             data-seed="logId1"
           >
-            <div style={{marginTop: '44px'}}>
               {koubei}
-            </div>
           </TabBar.Item>
           <TabBar.Item
             icon={
@@ -105,9 +103,7 @@ class TabBarExample extends React.Component {
               });
             }}
           >
-            <div style={{marginTop: '44px'}}>
               {friend}
-            </div>
           </TabBar.Item>
           <TabBar.Item
             icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
@@ -121,9 +117,7 @@ class TabBarExample extends React.Component {
               });
             }}
           >
-            <div style={{marginTop: '44px'}}>
               {my}
-            </div>
           </TabBar.Item>
         </TabBar>
       </div>

@@ -16,7 +16,8 @@ const staticNextRoutes = [homePrefix].map(item => {
 module.exports = [  
   { "src": "/favicon.ico", "dest": "/static/favicon.ico" },
   { "src": "/robots.txt", "dest": "/static/robots.txt" },   
-  { "src": "/static/logo.png", headers: headers(31536000), "dest": "/static/logo.png" },    
+  { "src": "/static/logo.png", headers: headers(31536000), "dest": "/static/logo.png" },   
+   
   ...staticNextRoutes,
   {
     src: "/",

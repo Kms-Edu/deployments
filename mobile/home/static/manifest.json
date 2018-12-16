@@ -4,8 +4,9 @@
   "background_color": "#FFFFFF",
   "theme_color": "#673ab7",
   "description": "Kindergarten and school management",
-  "display": "minimal-ui",
+  "display": "fullscreen",
   "start_url": "/",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/static/icon144.png",
