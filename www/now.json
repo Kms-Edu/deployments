@@ -4,6 +4,10 @@
   "alias": "web.ihs.edu.vn",
   "builds": [
     {
+      "src": "auth/handlers/**/*.js",
+      "use": "@now/node"
+    },
+    {
       "src": "home/package.json",
       "use": "@now/next",
       "config": {
@@ -25,6 +29,10 @@
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/auth/handlers/$1/index.js"
+    },
     {
       "src": "/favicon.ico",
       "dest": "/static/favicon.ico"
@@ -100,15 +108,17 @@
   "build": {
     "env": {
       "GOOGLE_CLIENT_ID": "@google_client_id",
-      "API_HOST": "https://api.ihs.edu.vn",
-      "WEB_HOST": "https://web.ihs.edu.vn",
-      "MOBILE_HOST": "https://m.ihs.edu.vn",
+      "API_HOST": "api.ihs.edu.vn",
+      "WEB_HOST": "web.ihs.edu.vn",
+      "MOBILE_HOST": "m.ihs.edu.vn",
       "GRAPHQL_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
     }
   },
   "env": {
     "WWW_HOME_PREFIX": "/home",
     "WWW_BLOG_PREFIX": "/blog",
-    "WWW_DASHBOARD_PREFIX": "/dashboard"
+    "WWW_DASHBOARD_PREFIX": "/dashboard",
+    "GRAPHQL_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
+    "JWT_SECRET": "@jwt_secret"
   }
 }

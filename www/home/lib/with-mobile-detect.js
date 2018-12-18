@@ -1,14 +1,16 @@
 import App, { Container } from 'next/app'
 
-const withApp = AppContainer =>
+const withMobileDetect = AppContainer =>
   class extends App {
     static async getInitialProps (props) {
-      const { Component, router, ctx, } = props
+      const { ctx, } = props
       const {req} = ctx
+      let isMobile = null
       if (req) {
         const MobileDetect = require('mobile-detect')
         const md = new MobileDetect(req.headers['user-agent']);
-        ctx.isMobile = md.mobile()
+        isMobile = md.mobile()
+        ctx.isMobile = isMobile
       }
       
 /*
@@ -17,18 +19,20 @@ const withApp = AppContainer =>
         console.log(`m.${req.headers.host}`)
       }      
 */    
-      
-      let pageProps = {}
-     
-      if (Component.getInitialProps) {
-        pageProps = await Component.getInitialProps(ctx)
+      if (!isMobile) {
+        let appProps = {}
+        if (AppContainer.getInitialProps) {
+          appProps = await AppContainer.getInitialProps(props)
+        }
+        
+        return { ...appProps }
+      } else {
+        return {
+          isMobile
+        }
       }
-      
-     
-      return { pageProps, router}
     }
 
-    
     render () {  
       return (
         <Container>
@@ -38,4 +42,4 @@ const withApp = AppContainer =>
     }
   }
 
-export default withApp
+export default withMobileDetect

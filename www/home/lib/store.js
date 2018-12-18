@@ -1,7 +1,5 @@
 import { createStore } from 'easy-peasy';
-import model from '../models'
-
-const initializeStore = (initialState) => {
+const initializeStore = (model, initialState) => {
   return createStore(model, {
     initialState,
   })

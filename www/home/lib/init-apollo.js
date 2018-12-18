@@ -7,9 +7,7 @@ import { WebSocketLink } from 'apollo-link-ws'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { onError } from 'apollo-link-error';
 import { getMainDefinition } from 'apollo-utilities'
-
 import { createSubscriptionClient } from './create-subscription-client'
-const GRAPHQL_HOST = process.env.GRAPHQL_HOST
 
 const isSubscriptionOperation = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
@@ -24,9 +22,7 @@ const isMutationOperation = ({ query }) => {
 //const WS_URL=`wss://api-qdhhebsjkn.now.sh`
 //const GRAPHQL_URL= process.env.NODE_ENV === 'production' ? `https://${SERVER_URL}/graphql` : `http://localhost:3000/graphql`
 //const WS_URL = process.env.NODE_ENV === 'production' ? `wss://${SERVER_URL}/subscriptions` :`ws://localhost:3000/subscriptions`
-const QUERY_URL = `https://${GRAPHQL_HOST}`
-const SUBSCRIPTION_URL = `wss://${GRAPHQL_HOST}`
-const MUTATION_URL = QUERY_URL
+
 
 let apolloClient = null
 
@@ -35,7 +31,11 @@ if (!process.browser) {
   global.fetch = fetch
 }
 
-function create (initialState) {
+function create (initialState, {reduxStore, graphqlHost}) {
+  const QUERY_URL = `https://${graphqlHost}`
+  const SUBSCRIPTION_URL = `wss://${graphqlHost}`
+  const MUTATION_URL = QUERY_URL
+
   const ssrMode = !process.browser
 
   let link = createHttpLink({
@@ -45,7 +45,8 @@ function create (initialState) {
 
   const contextLink = setContext(
     async () => {
-      const token = localStorage.getItem('token');
+      //const token = localStorage.getItem('token');
+      const token = reduxStore.getState().auth.token
 
       return {
         headers: {
@@ -59,17 +60,19 @@ function create (initialState) {
     ({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
         graphQLErrors.map(err => {
-          console.log(err.message)
+          //console.log(err.message)
+          reduxStore.dispatch.error.setError(err.message)
         })
       }
       if (networkError) {
-        console.log(networkError)
+        //console.log(networkError)
+        reduxStore.dispatch.error.setError(networkError)
       }
     }
   )
   
 
-  link = ssrMode ? link : ApolloLink.from([errorLink, contextLink, link])
+  link = ApolloLink.from([errorLink, contextLink, link])
 
   if (!ssrMode) {
     const mutationLink = createHttpLink({
@@ -86,6 +89,7 @@ function create (initialState) {
     const wsLink = new WebSocketLink(
       createSubscriptionClient({
         wsUrl: SUBSCRIPTION_URL,
+        reduxStore,
       })
     )
     const subscriptionLink = ApolloLink.from([errorLink, wsLink])

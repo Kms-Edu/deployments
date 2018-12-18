@@ -13,6 +13,7 @@ const Login = (props) => {
   const login = useAction(dispatch => dispatch.auth.login)
   const logout = useAction(dispatch => dispatch.auth.logout)
   const token = useStore(state => state.auth.token)
+  const url = process.env.NODE_ENV !== 'production' ? 'http://localhost:3001/' : `https://${process.env.WEB_HOST}/api/login`
   if (token) {
     return (
       <GoogleLogout
@@ -29,8 +30,8 @@ const Login = (props) => {
       <GoogleLogin
         clientId={process.env.GOOGLE_CLIENT_ID}
         buttonText="Login"
-        onSuccess={login}
-        onFailure={login}
+        onSuccess={(response) => login({...response, url,})}
+        onFailure={(response) => login({...response, url,})}
         render={renderProps => (
           <HeaderLink onClick={renderProps.onClick}>Google Login</HeaderLink>
         )}

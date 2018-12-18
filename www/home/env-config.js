@@ -1,7 +1,7 @@
 const not_now = !process.env.NOW_REGION
 const web_host = not_now ? 'http://localhost:3000' : process.env.WEB_HOST
 const api_host = not_now ? 'http://localhost:3001' : process.env.API_HOST
-const mobile_host = 'm.ihs.edu.vn'
+const mobile_host = not_now ? 'm.ihs.edu.vn' : process.env.MOBILE_HOST
 
 module.exports = {
   'process.env.NOW_REGION': process.env.NOW_REGION,

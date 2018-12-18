@@ -26,14 +26,14 @@
   ],
   "build": {
     "env": {
-      "GRAPHQL_HOST": "edu-1.herokuapp.com/v1alpha1/graphql",
-      "GOOGLE_CLIENT_ID": "@google_client_id"
+      "GOOGLE_CLIENT_ID": "@google_client_id",
+      "API_HOST": "api.ihs.edu.vn",
+      "WEB_HOST": "web.ihs.edu.vn",
+      "MOBILE_HOST": "m.ihs.edu.vn",
+      "GRAPHQL_HOST": "edu-1.herokuapp.com/v1alpha1/graphql"
     }
   },
   "env": {
-    "WWW_HOME_PREFIX": "",
-    "API_HOST": "https://m.ihs.edu.vn",
-    "WEB_HOST": "https://web.ihs.edu.vn",
-    "MOBILE_HOST": "https://m.ihs.edu.vn"
+    "WWW_HOME_PREFIX": ""
   }
 }

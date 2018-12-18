@@ -1,6 +1,6 @@
 const { query } = require('graphqurl');
 const dev = process.env.NODE_ENV !== 'production'
-const AUTH_HOST = 'edu-1.herokuapp.com/v1alpha1/graphql'// : process.env.AUTH_HOST
+const GRAPHQL_HOST = process.env.GRAPHQL_HOST
 const JWT_SECRET = dev ? 'test' : process.env.JWT_SECRET
 const jwt = require('jsonwebtoken')
 const axios = require('axios')
@@ -31,7 +31,7 @@ async function createUser(gql, variables) {
       {
         query: gql,
         variables,
-        endpoint: `https://${AUTH_HOST}`,
+        endpoint: `https://${GRAPHQL_HOST}`,
         headers: {
           'x-hasura-access-key': JWT_SECRET,
         }

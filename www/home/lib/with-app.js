@@ -4,13 +4,6 @@ const withApp = AppContainer =>
   class extends App {
     static async getInitialProps (props) {
       const { Component, router, ctx, } = props
-      const {req} = ctx
-      if (req) {
-        const MobileDetect = require('mobile-detect')
-        const md = new MobileDetect(req.headers['user-agent']);
-        ctx.isMobile = md.mobile()
-      }
-      
 /*
       const { req } = ctx
       if (req) {

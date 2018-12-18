@@ -27,6 +27,7 @@
     "apollo-link-ws": "^1.0.10",
     "apollo-utilities": "^1.0.26",
     "axios": "^0.18.0",
+    "cookie": "^0.3.1",
     "easy-peasy": "^1.7.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",

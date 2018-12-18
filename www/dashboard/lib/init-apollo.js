@@ -9,7 +9,7 @@ import { onError } from 'apollo-link-error';
 import { getMainDefinition } from 'apollo-utilities'
 
 import { createSubscriptionClient } from './create-subscription-client'
-const API_HOST = process.env.API_HOST
+const GRAPHQL_HOST = process.env.GRAPHQL_HOST
 
 const isSubscriptionOperation = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
@@ -24,8 +24,8 @@ const isMutationOperation = ({ query }) => {
 //const WS_URL=`wss://api-qdhhebsjkn.now.sh`
 //const GRAPHQL_URL= process.env.NODE_ENV === 'production' ? `https://${SERVER_URL}/graphql` : `http://localhost:3000/graphql`
 //const WS_URL = process.env.NODE_ENV === 'production' ? `wss://${SERVER_URL}/subscriptions` :`ws://localhost:3000/subscriptions`
-const QUERY_URL = `https://${API_HOST}`
-const SUBSCRIPTION_URL = `wss://${API_HOST}`
+const QUERY_URL = `https://${GRAPHQL_HOST}`
+const SUBSCRIPTION_URL = `wss://${GRAPHQL_HOST}`
 const MUTATION_URL = QUERY_URL
 
 let apolloClient = null

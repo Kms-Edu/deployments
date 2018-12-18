@@ -1,6 +1,6 @@
-import Query from '../containers/query'
 import gql from 'graphql-tag'
-import MeasureRender from '../containers/measure-render'
+import MeasureRender from 'kms-web-components/lib/lib/measure-render'
+import Query from 'kms-web-components/lib/lib/query'
 import Layout from '../components/layouts/nav-bar'
 import Title from '../components/title'
 import {AccountCircle} from 'styled-icons/material/AccountCircle.cjs'
@@ -60,26 +60,33 @@ const AgeList = ({sche_ages}) => {
   })
 }
 
+const Websocket = () => {
+  const websocketStatus = useStore(state => state.websocket.status)
+  return <div>{websocketStatus}</div>
+}
 
-const Page = () => (
-  <MeasureRender name="IndexPage">
-    <Layout
-      title="Home"
-      description="Home"
-    >
-      <Title>Home page</Title>
-      <AccountCircle size={30} />
-      <TodoList />
-      <Query
-        query={testQuery}
-        subscription={testSubscription}>
-        {data => <AgeList sche_ages={data.sche_ages} />
-        }
-      </Query>
-    </Layout>
-  </MeasureRender>
-)
-Page.getInitialProps = async ({res, apolloClient, fetchPolicy}) => {  
+const Page = () => {
+  return (
+    <MeasureRender name="IndexPage">
+      <Layout
+        title="Home"
+        description="Home"
+      >
+        <Title>Home page</Title>
+        <Websocket />
+        <AccountCircle size={30} />
+        <TodoList />
+        <Query
+          query={testQuery}
+          subscription={testSubscription}>
+          {data => <AgeList sche_ages={data.sche_ages} />
+          }
+        </Query>
+      </Layout>
+    </MeasureRender>
+  )
+}
+Page.getInitialProps = async ({apolloClient, fetchPolicy}) => {  
   await apolloClient.query({query: testQuery, ...fetchPolicy})    
 }
 export default Page

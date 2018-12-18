@@ -59,6 +59,7 @@ module.exports = (phase, {defaultConfig}) => {
   // fix: prevents error when .less files are required by node
   if (typeof require !== 'undefined') {
     require.extensions['.less'] = (file) => {}
+    require.extensions['.css'] = (file) => {}
   }
 
   const lessToJS = require('less-vars-to-js')
